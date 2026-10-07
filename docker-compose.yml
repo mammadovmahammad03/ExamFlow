@@ -1,0 +1,16 @@
+services:
+  examflow-sql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: examflow-sql
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "ExamFlow_2026!"
+      MSSQL_PID: "Developer"
+    ports:
+      - "14330:1433"
+    volumes:
+      - examflow-mssql-data:/var/opt/mssql
+    restart: unless-stopped
+
+volumes:
+  examflow-mssql-data:
